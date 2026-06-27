@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('criteria', function (Blueprint $table) {
             $table->id();
-            $table->string('code'); // Contoh: C1
-            $table->string('name'); // Contoh: Pemrograman
+            $table->string('code'); // Contoh: C1, C2
+            $table->string('name'); // Contoh: Minat Coding, Kerja Sama Tim
             $table->enum('type', ['benefit', 'cost'])->default('benefit');
+            // Tambahkan kolom kategori di bawah ini
+            $table->enum('category', ['hard_skill', 'interest', 'soft_skill'])->default('hard_skill');
             $table->timestamps();
         });
     }

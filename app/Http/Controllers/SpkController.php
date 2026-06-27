@@ -11,8 +11,11 @@ class SpkController extends Controller
 {
     public function index()
     {
-        $criteria = Criterion::all();
-        return view('spk.form', compact('criteria'));
+        $hardSkills = Criterion::where('category', 'hard_skill')->get();
+        $interests = Criterion::where('category', 'interest')->get();
+        $softSkills = Criterion::where('category', 'soft_skill')->get();
+
+        return view('spk.form', compact('hardSkills', 'interests', 'softSkills'));
     }
 
     public function calculate(Request $request)
